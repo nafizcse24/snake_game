@@ -1,0 +1,103 @@
+/* ─── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    height: 100%;
+    background: #0d1a0a;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ─── Layout ────────────────────────────────────────────────── */
+#game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 16px;
+    padding: 8px;
+}
+
+/* ─── Canvas ────────────────────────────────────────────────── */
+#gameCanvas {
+    /* Keep 1:1 ratio; fill available space above the D-pad */
+    width:  min(100vw, calc(100svh - 190px));
+    height: min(100vw, calc(100svh - 190px));
+    max-width:  800px;
+    max-height: 800px;
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(60, 200, 40, 0.25), 0 8px 32px rgba(0,0,0,0.6);
+    image-rendering: auto;
+    display: block;
+}
+
+/* ─── D-pad ──────────────────────────────────────────────────── */
+#dpad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+#dpad-middle {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+#dpad button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid rgba(100, 220, 60, 0.5);
+    background: rgba(20, 50, 15, 0.85);
+    color: #80e040;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.1s, transform 0.08s;
+    -webkit-tap-highlight-color: transparent;
+    backdrop-filter: blur(4px);
+}
+
+#dpad button:active {
+    background: rgba(60, 150, 30, 0.9);
+    transform: scale(0.92);
+}
+
+/* ─── Hide D-pad on desktop (hover-capable devices) ────────── */
+@media (hover: hover) and (pointer: fine) {
+    #dpad { display: none; }
+
+    #gameCanvas {
+        width:  min(90vw, 90vh, 800px);
+        height: min(90vw, 90vh, 800px);
+    }
+}
+
+/* ─── Landscape phones: side-by-side ───────────────────────── */
+@media (orientation: landscape) and (max-height: 500px) {
+    #game-wrapper {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #gameCanvas {
+        width:  calc(100svh - 16px);
+        height: calc(100svh - 16px);
+        max-width: 480px;
+        max-height: 480px;
+    }
+
+    #dpad {
+        order: 2;
+    }
+}
