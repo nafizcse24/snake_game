@@ -2,28 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#0d1a0a">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#afd746">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>🐍 Snake – Enhanced Edition</title>
+    <title>Snake</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="game-wrapper">
+        <canvas id="gameCanvas" width="800" height="800"></canvas>
 
-        <canvas id="gameCanvas" role="img" aria-label="Snake game canvas"></canvas>
-
-        <!-- On-screen D-pad (shown on touch/mobile, hidden on desktop) -->
-        <div id="dpad" aria-label="Directional controls">
-            <button id="btn-up"    aria-label="Up">▲</button>
+        <!-- On-screen directional buttons for mobile devices -->
+        <div id="dpad">
+            <button id="btn-up" aria-label="Up">▲</button>
             <div id="dpad-middle">
-                <button id="btn-left"  aria-label="Left">◀</button>
+                <button id="btn-left" aria-label="Left">◀</button>
                 <button id="btn-right" aria-label="Right">▶</button>
             </div>
-            <button id="btn-down"  aria-label="Down">▼</button>
+            <button id="btn-down" aria-label="Down">▼</button>
         </div>
-
     </div>
     <script src="game.js"></script>
 </body>
